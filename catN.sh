@@ -4,6 +4,11 @@
 function catN() {
 	start=$1
 	end=$2
+	if [ $end -lt $start ]; then
+		t=$end
+		end=$start
+		start=$t
+	fi
 	filename=$3
 	rows=$(($end-$start+1))
 	cat $filename | head -n $end | tail -n $rows
